@@ -3,7 +3,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby "3.1.2"
 
-gem "webpacker", "~> 5.0"
+# gem "webpacker", "~> 5.0"
 
 gem "devise"
 

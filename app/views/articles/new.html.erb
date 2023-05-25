@@ -1,9 +1,42 @@
 <h1>New article</h1>
 
-<%= render "form", article: @article %>
-
-<br>
-
+<div class="container">
+<%= form_with(model: @article, url: articles_path, class: "form") do |form| %>
+  <div class="mb-3">
+    <%= form.label :title, class: "form-label" %>
+    <%= form.text_field :title, class: "form-control" %>
+  </div>
+  <div class="mb-3">
+    <%= form.label :content, class: "form-label" %>
+    <%= form.text_area :content, class: "form-control", rows: 6 %>
+  </div>
+  <div class="mb-3">
+    <%= form.label :is_public, class: "form-check-label" do %>
+      <%= form.check_box :is_public, class: "form-check-input" %>
+      Public
+    <% end %>
+  </div>
+  <div class="mb-3">
+    <%= form.label :published_at, class: "form-label" %>
+    <div class="input-group date" id="published_at_picker" data-bs-toggle="datepicker">
+      <%= form.text_field :published_at, class: "form-control", readonly: true %>
+      <span class="input-group-text">
+        <i class="fa fa-calendar"></i>
+      </span>
+    </div>
+  </div>
+  <%= form.submit "Create Article", class: "btn btn-primary" %>
+<% end %>
+</div>
 <div>
   <%= link_to "Back to articles", articles_path %>
 </div>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    var datepickerElement = document.getElementById("published_at_picker");
+    var datepicker = new bootstrap.Datepicker(datepickerElement, {
+      format: "yyyy-mm-dd"
+    });
+  });
+</script>
