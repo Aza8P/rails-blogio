@@ -1,13 +1,13 @@
 class ArticlesController < ApplicationController
   before_action :set_article, only: %i[ show edit update destroy ]
-
   # GET /articles or /articles.json
   def index
-    @articles = Article.all
+    @articles = Article.where(is_public: true).order(created_at: :desc)
   end
 
   # GET /articles/1 or /articles/1.json
   def show
+    @article.increment!(:readings)
   end
 
   # GET /articles/new
@@ -55,6 +55,14 @@ class ArticlesController < ApplicationController
       format.html { redirect_to articles_url, notice: "Article was successfully destroyed." }
       format.json { head :no_content }
     end
+  end
+
+  def my_articles
+    @articles = current_user.articles
+  end
+
+  def search
+    @articles = Article.where("title LIKE ?", "%#{params[:q]}%")
   end
 
   private
