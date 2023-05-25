@@ -18,7 +18,7 @@
   </div>
   <div class="mb-3">
     <%= form.label :published_at, class: "form-label" %>
-    <div class="input-group date" id="published_at_picker" data-bs-toggle="datepicker">
+    <div class="input-group date" id="published_at_picker">
       <%= form.text_field :published_at, class: "form-control", readonly: true %>
       <span class="input-group-text">
         <i class="fa fa-calendar"></i>
@@ -35,8 +35,8 @@
 <script>
   document.addEventListener("DOMContentLoaded", function() {
     var datepickerElement = document.getElementById("published_at_picker");
-    var datepicker = new bootstrap.Datepicker(datepickerElement, {
-      format: "yyyy-mm-dd"
+    var datepicker = new Datepicker(datepickerElement, {
+    format: "yyyy-mm-dd"
     });
   });
 </script>
