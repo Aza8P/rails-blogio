@@ -18,10 +18,12 @@
   </div>
   <div class="mb-3">
     <%= form.label :published_at, class: "form-label" %>
-    <div class="input-group date" id="published_at_picker">
-      <%= form.text_field :published_at, class: "form-control", readonly: true %>
-      <span class="input-group-text">
-        <i class="fa fa-calendar"></i>
+    <div class="input-group date" id="datepicker">
+      <%= form.text_field :published_at, class: "form-control", id: "datepicker" %> 
+      <span class="input-group-append">
+        <span class="input-group-text bg-light d-block">
+          <i class="fa fa-calendar"></i>
+        </span>
       </span>
     </div>
   </div>
@@ -33,10 +35,8 @@
 </div>
 
 <script>
-  document.addEventListener("DOMContentLoaded", function() {
-    var datepickerElement = document.getElementById("published_at_picker");
-    var datepicker = new Datepicker(datepickerElement, {
-    format: "yyyy-mm-dd"
-    });
-  });
+console.log("datepicker js")
+ $(function(){
+  $('#datepicker').datepicker();
+});
 </script>

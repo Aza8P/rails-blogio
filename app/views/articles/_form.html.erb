@@ -7,11 +7,10 @@
     <%= f.input :title %>
     <%= f.input :content %>
     <%= f.input :is_public %>
-    <%= f.input :published_at %>
-    <%= f.association :user %>
+    <%= f.input :published_at, as: :datepicker %>
   </div>
 
   <div class="form-actions">
-    <%= f.button :submit %>
+    <%= f.button :submit, class: "btn btn-primary" %>
   </div>
 <% end %>
