@@ -99,6 +99,8 @@ GEM
       warden (~> 1.2.3)
     erubi (1.12.0)
     execjs (2.8.1)
+    faker (3.2.0)
+      i18n (>= 1.8.11, < 2)
     ffi (1.15.5)
     font-awesome-sass (6.4.0)
       sassc (~> 2.0)
@@ -149,8 +151,6 @@ GEM
       nio4r (~> 2.0)
     racc (1.6.2)
     rack (2.2.7)
-    rack-proxy (0.7.6)
-      rack
     rack-test (2.1.0)
       rack (>= 1.3)
     rails (7.0.4.3)
@@ -193,7 +193,8 @@ GEM
       sprockets (> 3.0)
       sprockets-rails
       tilt
-    semantic_range (3.0.0)
+    simple-form-datepicker (0.1.3)
+      simple_form
     sprockets (4.2.0)
       concurrent-ruby (~> 1.0)
       rack (>= 2.2.4, < 4)
@@ -219,11 +220,6 @@ GEM
       activemodel (>= 6.0.0)
       bindex (>= 0.4.0)
       railties (>= 6.0.0)
-    webpacker (5.4.4)
-      activesupport (>= 5.2)
-      rack-proxy (>= 0.6.1)
-      railties (>= 5.2)
-      semantic_range (>= 2.3.0)
     websocket-driver (0.7.5)
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.5)
@@ -239,6 +235,7 @@ DEPENDENCIES
   bootstrap
   debug
   devise
+  faker
   font-awesome-sass (~> 6.1)
   importmap-rails
   jbuilder
@@ -246,13 +243,13 @@ DEPENDENCIES
   puma (~> 5.0)
   rails (~> 7.0.4, >= 7.0.4.3)
   sassc-rails
+  simple-form-datepicker (~> 0.1.3)
   simple_form!
   sprockets-rails
   stimulus-rails
   turbo-rails
   tzinfo-data
   web-console
-  webpacker (~> 5.0)
 
 RUBY VERSION
    ruby 3.1.2p20

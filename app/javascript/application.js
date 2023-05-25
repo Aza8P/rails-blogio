@@ -1,2 +1,4 @@
 import "@hotwired/turbo-rails"
-import 'bootstrap';
+import 'jquery'
+import 'bootstrap'
+import 'bootstrap-datepicker'
