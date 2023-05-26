@@ -2,12 +2,22 @@ class ArticlesController < ApplicationController
   before_action :set_article, only: %i[ show edit update destroy ]
   # GET /articles or /articles.json
   def index
-    @articles = Article.where(is_public: true).order(created_at: :desc)
+    @articles = if params[:query]
+      Article.includes(:user).where(is_public:true).where('title ILIKE ?', "%#{params[:query]}%").order(created_at: :desc).page(params[:page]).per(8)
+    else
+      Article.all.includes(:user).where(is_public: true).order(created_at: :desc).page(params[:page]).per(8)
+  end
+
+    respond_to do |format|
+      format.html
+      format.json { render json: { articles: @articles } }
+    end
   end
 
   # GET /articles/1 or /articles/1.json
   def show
     @article.increment!(:readings)
+    @author = User.find(@article.user_id).username
   end
 
   # GET /articles/new
@@ -52,20 +62,18 @@ class ArticlesController < ApplicationController
   # DELETE /articles/1 or /articles/1.json
   def destroy
     @article.destroy
-
-    respond_to do |format|
-      format.html { redirect_to articles_url, notice: "Article was successfully destroyed." }
-      format.json { head :no_content }
-    end
+    redirect_to articles_path, notice: 'Article was deleted.'
   end
 
   def my_articles
     @articles = current_user.articles
   end
 
-  def search
-    @articles = Article.where("title LIKE ?", "%#{params[:q]}%")
-  end
+  # def search
+  #   @articles = Article.where("title LIKE ?", "%#{params[:q]}%")
+  #   render partial: 'shared/search_results', locals: { articles: @articles}
+
+  # end
 
   private
     # Use callbacks to share common setup or constraints between actions.

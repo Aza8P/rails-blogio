@@ -5,6 +5,8 @@ ruby "3.1.2"
 
 # gem "webpacker", "~> 5.0"
 
+gem 'kaminari'
+
 gem "devise"
 
 gem "faker"
