@@ -12,15 +12,24 @@ Article.destroy_all
 
 puts "Creating articles..."
 
-30.times do
-  article = Article.create(
-    title: Faker::Lorem.sentence(word_count: 3),
-    content: Faker::Lorem.paragraph(sentence_count: 5),
-    is_public: true,
-    published_at: Date.today,
-    user_id: User.first.id
+3.times do
+  sci_fi_terms = ["alien", "spaceship", "galaxy", "nebula", "extraterrestrial", "black hole", "time travel", "quantum", "teleportation", "cybernetic", "dystopian", "android", "multiverse", "hyperspace", "singularity"]
+
+  user = User.create!(
+    username: Faker::Name.name,
+    email: Faker::Internet.email,
+    password: "123456",
   )
-  puts "Article with id: #{article.id} was created"
+
+  15.times do
+    sci_fi_term = sci_fi_terms.sample
+    user.articles.create!(
+      title: "#{sci_fi_term.capitalize} #{Faker::Verb.base}",
+      content: "#{Faker::Lorem.paragraph_by_chars(number: 500, supplemental: false)} #{sci_fi_term} #{Faker::Lorem.paragraph_by_chars(number: 500, supplemental: false)}",
+      is_public: true,
+      published_at: random_date = Faker::Date.between(from: 1.year.ago, to: Date.today),
+      readings: Faker::Number.between(from: 1, to: 100),
+    )
+  end
 end
-  
 puts "Finished!"

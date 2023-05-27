@@ -17,6 +17,7 @@
     </div>
   </div>
   <br>
+  <br>
 
   <div id="articles">
     <table class="table">
@@ -33,21 +34,21 @@
       <tbody>
         <% @articles.each_with_index do |article, index| %>
         <tr>
-          <th scope="row"><%= index + 1 %></th>
+          <th scope="row"><%= (@articles.current_page - 1) * @articles.limit_value + index + 1 %></th>
           <td><%= article.title %></td>
           <td><%= article.readings %></td>
           <td><%= article.user.username %></td>
           <td><%= article.published_at%></td>
           <td>
             <div class="buttons">
-              <%= link_to article_path(article), class: "btn btn-link" do %>
+              <%= link_to article_path(article), style: "text-decoration: none;", class: "btn btn-link" do %>
                 <i class="fas fa-eye"></i> Show
               <% end %>
               <% if user_signed_in? && current_user == article.user %>
-                <%= link_to edit_article_path(article), class: "btn btn-link" do %>
+                <%= link_to edit_article_path(article), style: "text-decoration: none;", class: "btn btn-link" do %>
                 <i class="fas fa-edit"></i> Edit
                 <% end %>
-                <%= link_to article_path(article), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: "btn btn-link" do %>
+                <%= link_to article_path(article), style: "text-decoration: none;", data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: "btn btn-link" do %>
                   <i class="fas fa-trash"></i> Delete
                 <% end %>
               <% end %>
@@ -57,6 +58,7 @@
       <% end %>
     </tbody>
     </table>
+    <br>
     <%= paginate @articles %>
   </div>
 </div>
