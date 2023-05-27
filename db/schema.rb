@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_05_25_073736) do
+ActiveRecord::Schema[7.0].define(version: 2023_05_26_044510) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -46,7 +46,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_25_073736) do
     t.string "title"
     t.text "content"
     t.boolean "is_public"
-    t.datetime "published_at"
+    t.date "published_at"
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

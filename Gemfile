@@ -5,11 +5,14 @@ ruby "3.1.2"
 
 # gem "webpacker", "~> 5.0"
 
+gem 'kaminari'
+
 gem "devise"
 
 gem "faker"
 
 gem 'simple-form-datepicker', '~> 0.1.3'
+
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem "rails", "~> 7.0.4", ">= 7.0.4.3"

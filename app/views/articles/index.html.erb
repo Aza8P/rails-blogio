@@ -1,11 +1,22 @@
-<p style="color: green"><%= notice %></p>
-
-<h1>Articles</h1>
-
-<div class="container">
-  <button class="new-article">
-    <%= link_to "New article", new_article_path %>
-  </button>
+<div class="container" id="app">
+  <div class="row align-items-center">
+    <div class="col-sm-6">
+      <h1> <%= @articles.total_count %> Articles </h1>
+    </div>
+    <div class="col-sm-6" id="search-form">
+      <%= form_tag articles_path, method: :get do %>
+        <div class="input-group">
+          <%= text_field_tag :query, params[:query], class: "form-control", placeholder: "Search articles" %>
+          <div class="input-group-append">
+            <%= button_tag(type: :submit, class: "btn btn-outline-secondary") do %>
+              <i class="fas fa-search"></i>
+            <% end %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+  <br>
 
   <div id="articles">
     <table class="table">
@@ -21,20 +32,31 @@
       </thead>
       <tbody>
         <% @articles.each_with_index do |article, index| %>
-          <tr>
-            <th scope="row"><%= index + 1 %></th>
-            <td><%= article.title %></td>
-            <td><%= article.readings %></td> 
-            <td><%= article.user.username %></td>
-            <td><%= article.created_at.strftime("%B %d, %Y") %></td>
-            <td>
-              <%= link_to "Show", article_path(article), class: "btn btn-primary" %>
-              <%= link_to "Edit", edit_article_path(article), class: "btn btn-warning" %>
-              <%= link_to "Delete", article_path(article), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-danger" %>
-            </td>
-          </tr>
-        <% end %>
-      </tbody>
+        <tr>
+          <th scope="row"><%= index + 1 %></th>
+          <td><%= article.title %></td>
+          <td><%= article.readings %></td>
+          <td><%= article.user.username %></td>
+          <td><%= article.published_at%></td>
+          <td>
+            <div class="buttons">
+              <%= link_to article_path(article), class: "btn btn-link" do %>
+                <i class="fas fa-eye"></i> Show
+              <% end %>
+              <% if user_signed_in? && current_user == article.user %>
+                <%= link_to edit_article_path(article), class: "btn btn-link" do %>
+                <i class="fas fa-edit"></i> Edit
+                <% end %>
+                <%= link_to article_path(article), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: "btn btn-link" do %>
+                  <i class="fas fa-trash"></i> Delete
+                <% end %>
+              <% end %>
+            </div>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
     </table>
+    <%= paginate @articles %>
   </div>
 </div>
