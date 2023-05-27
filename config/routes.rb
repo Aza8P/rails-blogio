@@ -3,6 +3,6 @@ Rails.application.routes.draw do
   root to: "articles#index"
   resources :articles
   get '/my_articles', to: 'articles#my_articles', as: 'my_articles'
-  get 'search_articles', to: 'articles#search', as: 'search_articles'
+
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 end
