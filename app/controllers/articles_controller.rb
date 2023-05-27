@@ -5,7 +5,7 @@ class ArticlesController < ApplicationController
     if params[:query]
       @articles = Article.includes(:user).where(is_public: true).where('title ILIKE ?', "%#{params[:query]}%").order(created_at: :desc).page(params[:page]).per(8)
     elsif params[:my_articles]
-      @articles = current_user.articles.includes(:user).where(is_public: true).order(created_at: :desc).page(params[:page]).per(8)
+      @articles = current_user.articles.includes(:user).order(created_at: :desc).page(params[:page]).per(8)
     else
       @articles = Article.all.includes(:user).where(is_public: true).order(created_at: :desc).page(params[:page]).per(8)
     end
