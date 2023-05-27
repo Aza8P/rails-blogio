@@ -41,7 +41,7 @@
 - GitHub
 
 ### Challenges and Solutions
-During the development process, one of the challenges encountered was implementing the search functionality. The requirement was to dynamically search articles based on the user's input and display the matching results without refreshing the page.
+During the development process, one of the challenges encountered was implementing the search functionality. The aim was to dynamically search articles based on the user's input and display the matching results without refreshing the page.
 
 The main difficulty was integrating the front-end Vue.js framework with the back-end Rails application to achieve this dynamic search feature. Coordinating the data retrieval from the server, updating the DOM with the search results, and handling user input required careful coordination between the JavaScript, Rails controller, and HTML templates.
 
