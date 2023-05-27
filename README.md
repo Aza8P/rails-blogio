@@ -19,7 +19,7 @@
 - User Authentication: Secure user authentication using Devise gem. Users can sign up, log in, and log out to access protected routes.
 - Article Management: Create, edit, and delete articles. Only authenticated users can perform these actions, and only authors can edit and delete the articles.
 - Article Listing: Display a paginated list of articles on the index page. Articles are ordered by creation date, with the most recent articles displayed first.
-- Article Search & Real-time results: Search for articles using the search function. The search is performed based on article titles. Search results are displayed dynamically without page reload.
+- Article Search & Real-time results: Search for articles using the search function. Search results are displayed dynamically without page reload.
 - Article Read Count: Each time an article is viewed, its reading count is incremented. The author of the article is displayed on the article show page.
 - Authorization: Restrict access to certain actions based on user authentication. Only authenticated users can create, edit, and delete articles.
 - User-specific Articles: Access a list of articles created by the currently logged-in user. The "My Articles" page displays articles created by the logged-in user.
