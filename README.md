@@ -7,13 +7,13 @@
 1. Getting started
 2. Features
 3. Technologies Used
-4. Usage
-6. Challenges and Solutions
+4. Challenges and Solutions
 
 ### Getting Started
 - Ruby (version 3.1.2)
 - Ruby on Rails (version 7.0.4)
 - PostgreSQL (version 14.4)
+- Rails Minimal Template with Import Maps
 
 ### Features
 - User Authentication: Secure user authentication using Devise gem. Users can sign up, log in, and log out to access protected routes.
