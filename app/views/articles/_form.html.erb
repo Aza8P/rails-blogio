@@ -34,7 +34,23 @@
 
 <script>
 console.log("datepicker js")
- $(function(){
-  $('#datepicker').datepicker()
+$(function(){
+  var currentDate = new Date();
+  var currentMonth = currentDate.getMonth();
+  var currentYear = currentDate.getFullYear();
+
+  $('#datepicker').datepicker({
+    minDate: new Date(currentYear, currentMonth, currentDate.getDate()),
+    startDate: new Date(currentYear, currentMonth, currentDate.getDate())
+  });
+
+  $('#datepicker').on('changeDate', function(e) {
+    var selectedDate = e.date;
+    var today = new Date();
+    
+    if (selectedDate < today) {
+      alert("Please choose a date from today onwards.");
+    }
+  });
 });
 </script>
