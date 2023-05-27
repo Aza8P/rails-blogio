@@ -1,16 +1,14 @@
-
-<div id="<%= dom_id article %>" class="container">
-  <div class="card justify-content-center">
+<div id="<%= dom_id article %>" class="container my-4">
+  <div class="card shadow">
     <div class="card-body">
-      <h5 class="card-title"> <%= article.title %></h5>
-      <p class="card-text">
-        <%= article.published_at %>
-      by <%= @author %>
-      </p>
-      <p class="card-text">
+      <h2 class="card-title text-primary"> <%= article.title %> </h2>
+      <h6 class="card-subtitle mb-2 text-muted">
+        <%= article.published_at %> by <%= @author %>
+      </h6>
+      <hr>
+      <p class="card-text text-justify">
         <%= article.content %> 
       </p>
     </div>
   </div>
 </div>
-

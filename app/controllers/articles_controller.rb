@@ -2,15 +2,12 @@ class ArticlesController < ApplicationController
   before_action :set_article, only: %i[ show edit update destroy ]
   # GET /articles or /articles.json
   def index
-    @articles = if params[:query]
-      Article.includes(:user).where(is_public:true).where('title ILIKE ?', "%#{params[:query]}%").order(created_at: :desc).page(params[:page]).per(8)
+    if params[:query]
+      @articles = Article.includes(:user).where(is_public: true).where('title ILIKE ?', "%#{params[:query]}%").order(created_at: :desc).page(params[:page]).per(8)
+    elsif params[:my_articles]
+      @articles = current_user.articles.includes(:user).where(is_public: true).order(created_at: :desc).page(params[:page]).per(8)
     else
-      Article.all.includes(:user).where(is_public: true).order(created_at: :desc).page(params[:page]).per(8)
-  end
-
-    respond_to do |format|
-      format.html
-      format.json { render json: { articles: @articles } }
+      @articles = Article.all.includes(:user).where(is_public: true).order(created_at: :desc).page(params[:page]).per(8)
     end
   end
 
@@ -68,12 +65,6 @@ class ArticlesController < ApplicationController
   def my_articles
     @articles = current_user.articles
   end
-
-  # def search
-  #   @articles = Article.where("title LIKE ?", "%#{params[:q]}%")
-  #   render partial: 'shared/search_results', locals: { articles: @articles}
-
-  # end
 
   private
     # Use callbacks to share common setup or constraints between actions.
