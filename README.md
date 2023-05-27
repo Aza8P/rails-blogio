@@ -1,6 +1,6 @@
 # Blogio
 
-*Blogio is a platform that allows users to create and share articles on science topics. It provides a user-friendly interface for managing articles, including features such as user authentication, article creation, editing, and publishing.*
+*Blogio is a platform that allows users to create and share articles on science topics. It provides a user-friendly interface for managing articles, including features such as user authentication, user registration, login/logout, article creation, article search, editing, and publishing.*
 
 
 ## Table of Contents
