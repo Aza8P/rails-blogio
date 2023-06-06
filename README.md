@@ -53,7 +53,5 @@ To overcome this challenge, the following steps were taken:
 - The response from the Rails controller was formatted as JSON and sent back to the front-end.
 - The Vue.js component received the JSON response and updated the DOM with the search results, dynamically rendering the articles on the page.
 
-Despite the successful implementation of the search functionality, a minor bug was encountered where the {{}} brackets were displaying at the bottom of the list.
-
 ### Important Note 
 There are two versions of the app on different branches: the ***master branch***, which implements the search function using Rails controllers only, and the ***search-vuejs branch***, which incorporates both Rails and Vue.js to enhance the search functionality.
