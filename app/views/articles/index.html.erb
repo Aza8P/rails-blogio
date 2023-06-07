@@ -1,7 +1,11 @@
 <div class="container" id="app">
   <div class="row align-items-center">
     <div class="col-sm-6">
-      <h1> <%= @articles.total_count %> Articles </h1>
+      <h1 v-if="!query"> <%= @articles.total_count %> Articles </h1>
+      <template v-else>
+      <h1> {{articles.length}}Articles </h1>
+      </template>
+
     </div>
     <div class="col-sm-6">
       <%= form_tag articles_path, method: :get, id: "search-form", 'v-on:submit.prevent': 'searchArticles' do %>
