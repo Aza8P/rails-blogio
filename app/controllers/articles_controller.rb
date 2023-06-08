@@ -9,6 +9,12 @@ class ArticlesController < ApplicationController
     else
       @articles = Article.all.includes(:user).where(is_public: true).order(created_at: :desc).page(params[:page]).per(8)
     end
+    @articles_with_username = @articles.as_json(include: { user: { only: [:username, :id] } })
+
+    respond_to do |format|
+      format.html
+      format.json { render json: @articles_with_username }
+    end
   end
 
   # GET /articles/1 or /articles/1.json
